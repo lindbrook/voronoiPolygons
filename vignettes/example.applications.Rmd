@@ -1,0 +1,62 @@
+---
+title: "Example Applications"
+author: "lindbrook"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Example Applications}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+
+library(VoronoiPolygons)
+library(cholera)
+```
+
+Using the locations of sites or landmarks of interest, Voronoi tessellation partitions a space into cells or tiles that represent neighborhoods (i.e., catchment or service areas). Then, by computing the vertices of those tiles, we can leverage various functions that use polygons and do things like color code neighborhoods or count elements of interest within neighborhoods.
+
+As an example, I use data from John Snow's map of the 1854 cholera outbreak in the Soho area London.
+
+## Coloring Neighborhoods
+
+To color code neighborhood tiles, we can use graphics::polygon().
+
+```{r coloring, fig.align = "center", fig.width = 5, fig.height = 5, echo = TRUE, eval = TRUE}
+polygon.vertices <- VoronoiPolygons(cholera::pumps, cases = cholera::roads,
+  plot.frame = "cases")
+
+snow.colors <- grDevices::adjustcolor(cholera::snowColors(), alpha.f = 1/3)
+
+cholera::snowMap(add.cases = FALSE)
+cholera::addNeighborhoodCases(metric = "euclidean")
+
+invisible(lapply(seq_along(polygon.vertices), function(i) {
+  polygon(polygon.vertices[[i]], col = snow.colors[[i]])
+}))
+
+```
+
+## Counting Cases
+
+To count the number of cases within each neighborhood, we can use sp::point.in.polygon().
+
+```{r counting, echo = TRUE, eval = TRUE}
+polygon.vertices <- VoronoiPolygons(cholera::pumps, cases = cholera::roads,
+  plot.frame = "cases")
+
+cases <- cholera::fatalities.unstacked
+
+census <- lapply(polygon.vertices, function(tile) {
+  sp::point.in.polygon(cases$x, cases$y, tile$x, tile$y)
+})
+
+neighborhood.pump <- paste0("p", cholera::pumps$id)
+
+stats::setNames(vapply(census, sum, integer(1L)), neighborhood.pump)
+```
