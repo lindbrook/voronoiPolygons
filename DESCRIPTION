@@ -1,7 +1,7 @@
 Package: VoronoiPolygons
 Type: Package
 Title: Tranlate Voronoi diagram cells into R polygons
-Version: 0.1.0
+Version: 0.0.9000
 Author: lindbrook
 Maintainer: lindbrook <lindbrook@gmail.com>
 Description: Translate 'deldir' Voronoi cells into a list of data frames of polygon vertices.

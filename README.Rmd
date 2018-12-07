@@ -16,7 +16,7 @@ library(VoronoiPolygons)
 library(cholera)
 ```
 
-## VoronoiPolygons: transform 'deldir' Voronoi tiles into polygon
+## VoronoiPolygons: transform 'deldir' Voronoi tiles into polygons
 
 Using the locations of sites or landmarks of interest, Voronoi tessellation partitions a space into cells or tiles that represent neighborhoods (i.e., catchment or service areas). Then, by computing the vertices of those tiles, we can leverage various functions that use polygons and do things like color code neighborhoods or count elements of interest within neighborhoods.
 
@@ -75,6 +75,6 @@ To install the development version of 'VoronoiPolygons' from GitHub:
 devtools::install_github("lindbrook/VoronoiPolygons", build_vignettes = TRUE)
 
 # For 'devtools' (>= 2.0.0)
-devtools::install_github("lindbrook/VoronoiPolygons", build_opts = c("--no-resave-data", "--no-manual"))
+devtools::install_github("lindbrook/VoronoiPolygons"))
 ```
 
