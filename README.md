@@ -30,7 +30,7 @@ invisible(lapply(seq_along(polygon.vertices), function(i) {
 }))
 ```
 
-<img src="vignettes/coloring-1.png" style="display: block; margin: auto;" />
+<img src="README_files/figure-markdown_github/coloring-1.png" style="display: block; margin: auto;" />
 
 Counting Cases
 --------------
