@@ -1,10 +1,10 @@
 Package: VoronoiPolygons
 Type: Package
-Title: Tranlate Voronoi diagram cells into R polygons
-Version: 0.0.9000
+Title: VoronoiPolygons: from tiles to polygons
+Version: 0.0.9002
 Author: lindbrook
 Maintainer: lindbrook <lindbrook@gmail.com>
-Description: Translate 'deldir' Voronoi cells into a list of data frames of polygon vertices.
+Description: Compute the vertices of 'deldir' Voronoi tessellation tiles.
 URL: https://github.com/lindbrook/VoronoiPolygons
 BugReports: https://github.com/lindbrook/VoronoiPolygons/issues
 License: GPL (>= 2)
@@ -16,7 +16,7 @@ Imports: deldir (>= 0.0-18),
          pracma,
          sp
 RoxygenNote: 6.1.1
-Suggests: 
+Suggests:
     knitr,
     rmarkdown
 VignetteBuilder: knitr
