@@ -62,5 +62,5 @@ To install the development version of 'VoronoiPolygons' from GitHub:
 devtools::install_github("lindbrook/VoronoiPolygons", build_vignettes = TRUE)
 
 # For 'devtools' (>= 2.0.0)
-devtools::install_github("lindbrook/VoronoiPolygons"))
+devtools::install_github("lindbrook/VoronoiPolygons", build_opts = c("--no-resave-data", "--no-manual"))
 ```

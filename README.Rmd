@@ -60,9 +60,6 @@ neighborhood.pump <- paste0("p", cholera::pumps$id)
 stats::setNames(vapply(census, sum, integer(1L)), neighborhood.pump)
 ```
 
-
-
-
 ### getting started
 
 To install the development version of 'VoronoiPolygons' from GitHub:
