@@ -4,24 +4,24 @@
 \alias{VoronoiPolygons}
 \title{Compute vertices of Voronoi diagram tiles.}
 \usage{
-VoronoiPolygons(sites, cases = NULL, plot.frame = "sites")
+VoronoiPolygons(sites, observed.data = NULL, rw = NULL)
 }
 \arguments{
 \item{sites}{Object. Data frame of sites to construct Voronoi diagram with variables "x" and "y".}
 
-\item{cases}{Object. Data frame of secondary source of data: observations, cases, addresses, etc. with variables "x" and "y".}
+\item{observed.data}{Object. Data frame of secondary source of data: observations, cases, addresses, etc. with variables "x" and "y".}
 
-\item{plot.frame}{Character. "cases" or "sites". Data to define extent or range of Voronoi diagram.}
+\item{rw}{Numeric. Vector of corners of the rectangular window: xmin, xmax, ymin, ymax. For deldir::deldir().}
 }
 \description{
 For use with polygon functions.
 }
 \examples{
-pump.neighborhoods <- VoronoiPolygons(cholera::pumps, cases)
+polygon.vertices <- VoronoiPolygons(cholera::pumps)
 cholera::snowMap()
-invisible(lapply(pump.neighborhoods, polygon))
+invisible(lapply(polygon.vertices, polygon))
 
-pump.neighborhoods <- VoronoiPolygons(cholera::pumps, cases = cholera::roads, plot.frame = "cases")
+polygon.vertices <- VoronoiPolygons(cholera::pumps, cholera::roads)
 cholera::snowMap()
-invisible(lapply(pump.neighborhoods, polygon))
+invisible(lapply(polygon.vertices, polygon))
 }

@@ -2,26 +2,29 @@
 #'
 #' For use with polygon functions.
 #' @param sites Object. Data frame of sites to construct Voronoi diagram with variables "x" and "y".
-#' @param cases Object. Data frame of secondary source of data: observations, cases, addresses, etc. with variables "x" and "y".
-#' @param plot.frame Character. "cases" or "sites". Data to define extent or range of Voronoi diagram.
+#' @param observed.data Object. Data frame of secondary source of data: observations, cases, addresses, etc. with variables "x" and "y".
+#' @param rw Numeric. Vector of corners of the rectangular window: xmin, xmax, ymin, ymax. For deldir::deldir().
 #' @export
 #' @examples
-#' pump.neighborhoods <- VoronoiPolygons(cholera::pumps, cases)
+#' polygon.vertices <- VoronoiPolygons(cholera::pumps)
 #' cholera::snowMap()
-#' invisible(lapply(pump.neighborhoods, polygon))
+#' invisible(lapply(polygon.vertices, polygon))
 #'
-#' pump.neighborhoods <- VoronoiPolygons(cholera::pumps, cases = cholera::roads, plot.frame = "cases")
+#' polygon.vertices <- VoronoiPolygons(cholera::pumps, cholera::roads)
 #' cholera::snowMap()
-#' invisible(lapply(pump.neighborhoods, polygon))
+#' invisible(lapply(polygon.vertices, polygon))
 
-VoronoiPolygons <- function(sites, cases = NULL, plot.frame = "sites") {
-  if (plot.frame == "sites") {
+VoronoiPolygons <- function(sites, observed.data = NULL, rw = NULL) {
+  if (is.null(observed.data) & is.null(rw)) {
     x.rng <- range(sites$x)
     y.rng <- range(sites$y)
-  } else if (plot.frame == "cases") {
-    x.rng <- range(cases$x)
-    y.rng <- range(cases$y)
-  } else stop('plot.frame must either be "cases" or "sites".')
+  } else if (is.null(observed.data) == FALSE & is.null(rw)) {
+    x.rng <- range(observed.data$x)
+    y.rng <- range(observed.data$y)
+  } else if (is.null(observed.data) & is.null(rw) == FALSE) {
+    x.rng <- rw[1:2]
+    y.rng <- rw[3:4]
+  } else stop("Use either 'observed.data' or 'rw'; not both.")
 
   four.corners <- list(nw = data.frame(x = min(x.rng), y = max(y.rng)),
                        ne = data.frame(x = max(x.rng), y = max(y.rng)),
@@ -67,7 +70,7 @@ VoronoiPolygons <- function(sites, cases = NULL, plot.frame = "sites") {
     idx <- order(apply(coords.centered, 1, pracma::cart2pol)[1, ])
     coords <- coords[idx, ]
 
-    # adds first vertex to last to close polygon
+    # append first vertex to last observation to close polygon
     rbind(coords, coords[1, ])
   })
 

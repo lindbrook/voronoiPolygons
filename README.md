@@ -1,5 +1,7 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
+[![GitHub\_Status\_Badge](https://img.shields.io/badge/GitHub-0.0.9003-red.svg)](https://github.com/lindbrook/VoronoiPolygons/blob/master/NEWS)
+
 VoronoiPolygons: from tiles to polygons
 ---------------------------------------
 
@@ -7,21 +9,17 @@ Using just the locations of sites or landmarks, Voronoi tessellation partitions 
 
 As an example, I use data from John Snow's map of the 1854 cholera outbreak in the Soho area London.
 
-Coloring Neighborhoods
-----------------------
+Coloring Polygons
+-----------------
 
 ``` r
 # compute vertices of Voronoi tiles
 polygon.vertices <- VoronoiPolygons(sites = cholera::pumps,
-  cases = cholera::roads, plot.frame = "cases")
+  observed.data = cholera::roads)
 
-# generate unique colors with alpha transparency
+# define colors, plot map, and color code fatalities
 snow.colors <- grDevices::adjustcolor(cholera::snowColors(), alpha.f = 1/3)
-
-# plot John Snow's map
 cholera::snowMap(add.cases = FALSE)
-
-# plot color coded fatalities
 cholera::addNeighborhoodCases(metric = "euclidean")
 
 # plot color coded polygons
@@ -32,25 +30,25 @@ invisible(lapply(seq_along(polygon.vertices), function(i) {
 
 <img src="README_files/figure-markdown_github/coloring-1.png" style="display: block; margin: auto;" />
 
-Counting Cases
---------------
+Counting Observations in Polygons
+---------------------------------
 
 To count the number of cases within each neighborhood, we can use sp::point.in.polygon().
 
 ``` r
 # compute vertices of Voronoi tiles
 polygon.vertices <- VoronoiPolygons(sites = cholera::pumps,
-  cases = cholera::roads, plot.frame = "cases")
+  observed.data = cholera::roads)
 
-# locations of the 578 fatalies in Soho
+# locations of the 578 fatalities in Soho
 cases <- cholera::fatalities.unstacked
 
-# count fatalities by neighborhood
+# count fatalities within each polygon (neigborhood)
 census <- lapply(polygon.vertices, function(tile) {
   sp::point.in.polygon(cases$x, cases$y, tile$x, tile$y)
 })
 
-# ID for the 13 water pumps in Soho
+# ID the 13 water pumps
 neighborhood.pump <- paste0("p", cholera::pumps$id)
 
 # count of fatalities by neighborhood
