@@ -1,6 +1,6 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
-[![GitHub\_Status\_Badge](https://img.shields.io/badge/GitHub-0.0.9003-red.svg)](https://github.com/lindbrook/VoronoiPolygons/blob/master/NEWS)
+[![GitHub\_Status\_Badge](https://img.shields.io/badge/GitHub-0.0.9004-red.svg)](https://github.com/lindbrook/VoronoiPolygons/blob/master/NEWS)
 
 VoronoiPolygons: from tiles to polygons
 ---------------------------------------
