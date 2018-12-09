@@ -115,7 +115,5 @@ deldirPolygons <- function(sites, observed.data = NULL, rw = NULL) {
 
   cell.data <- deldir::tile.list(voronoi)
 
-  lapply(deldir::tile.list(voronoi), function(dat) {
-    data.frame(x = dat$x, y = dat$y)
-  })
+  lapply(cell.data, function(dat) data.frame(x = dat$x, y = dat$y))
 }
