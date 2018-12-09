@@ -105,15 +105,8 @@ deldirPolygons <- function(sites, observed.data = NULL, rw = NULL) {
     y.rng <- rw[3:4]
   } else stop("Use either 'observed.data' or 'rw'; not both.")
 
-  four.corners <- list(nw = data.frame(x = min(x.rng), y = max(y.rng)),
-                       ne = data.frame(x = max(x.rng), y = max(y.rng)),
-                       se = data.frame(x = max(x.rng), y = min(y.rng)),
-                       sw = data.frame(x = min(x.rng), y = min(y.rng)))
-
   voronoi <- deldir::deldir(sites[, c("x", "y")], rw = c(x.rng, y.rng),
     suppressMsge = TRUE)
-
   cell.data <- deldir::tile.list(voronoi)
-
   lapply(cell.data, function(dat) data.frame(x = dat$x, y = dat$y))
 }
