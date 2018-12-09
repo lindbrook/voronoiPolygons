@@ -3,7 +3,7 @@
 #' For use with polygon functions.
 #' @param sites Object. Data frame of sites to construct Voronoi diagram with variables "x" and "y".
 #' @param observed.data Object. Data frame of secondary source of data: observations, cases, addresses, etc. with variables "x" and "y".
-#' @param rw Numeric. Vector of corners of the rectangular window: xmin, xmax, ymin, ymax. For deldir::deldir().
+#' @param rw Numeric. Vector of corners of the rectangular window or bounding box: xmin, xmax, ymin, ymax. For deldir::deldir().
 #' @export
 #' @examples
 #' polygon.vertices <- VoronoiPolygons(cholera::pumps)
@@ -82,7 +82,7 @@ VoronoiPolygons <- function(sites, observed.data = NULL, rw = NULL) {
 #' For use with polygon functions.
 #' @param sites Object. Data frame of sites to construct Voronoi diagram with variables "x" and "y".
 #' @param observed.data Object. Data frame of secondary source of data: observations, cases, addresses, etc. with variables "x" and "y".
-#' @param rw Numeric. Vector of corners of the rectangular window: xmin, xmax, ymin, ymax. For deldir::deldir().
+#' @param rw Numeric. Vector of corners of the rectangular window or bounding box: xmin, xmax, ymin, ymax. For deldir::deldir().
 #' @export
 #' @examples
 #' polygon.vertices <- deldirPolygons(cholera::pumps)

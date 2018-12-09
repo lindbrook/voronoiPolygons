@@ -11,7 +11,7 @@ deldirPolygons(sites, observed.data = NULL, rw = NULL)
 
 \item{observed.data}{Object. Data frame of secondary source of data: observations, cases, addresses, etc. with variables "x" and "y".}
 
-\item{rw}{Numeric. Vector of corners of the rectangular window: xmin, xmax, ymin, ymax. For deldir::deldir().}
+\item{rw}{Numeric. Vector of corners of the rectangular window or bounding box: xmin, xmax, ymin, ymax. For deldir::deldir().}
 }
 \description{
 For use with polygon functions.
