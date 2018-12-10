@@ -1,7 +1,5 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
-[![GitHub\_Status\_Badge](https://img.shields.io/badge/GitHub-0.0.9004-red.svg)](https://github.com/lindbrook/VoronoiPolygons/blob/master/NEWS)
-
 VoronoiPolygons: from tiles to polygons
 ---------------------------------------
 
@@ -49,10 +47,10 @@ census <- lapply(polygon.vertices, function(tile) {
 })
 
 # ID the 13 water pumps
-neighborhood.pump <- paste0("p", cholera::pumps$id)
+names(census) <- paste0("p", cholera::pumps$id)
 
 # count of fatalities by neighborhood
-stats::setNames(vapply(census, sum, integer(1L)), neighborhood.pump)
+vapply(census, sum, integer(1L))
 #>  p1  p2  p3  p4  p5  p6  p7  p8  p9 p10 p11 p12 p13 
 #>   0   1  13  23   6  61 361  16  27  62   2   2   4
 ```

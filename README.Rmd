@@ -56,10 +56,10 @@ census <- lapply(polygon.vertices, function(tile) {
 })
 
 # ID the 13 water pumps
-neighborhood.pump <- paste0("p", cholera::pumps$id)
+names(census) <- paste0("p", cholera::pumps$id)
 
 # count of fatalities by neighborhood
-stats::setNames(vapply(census, sum, integer(1L)), neighborhood.pump)
+vapply(census, sum, integer(1L))
 ```
 
 ### getting started
