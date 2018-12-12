@@ -2,6 +2,7 @@ VoronoiPolygons 0.0.9007
 ==================
 
 - use rw.data as argument.
+- use deldirPolygons() in README.
 
 
 VoronoiPolygons 0.0.9006

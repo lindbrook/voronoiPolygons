@@ -1,6 +1,6 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
-[![GitHub\_Status\_Badge](https://img.shields.io/badge/GitHub-0.0.9006-red.svg)](https://github.com/lindbrook/VoronoiPolygons/blob/master/NEWS)
+[![GitHub\_Status\_Badge](https://img.shields.io/badge/GitHub-0.0.9007-red.svg)](https://github.com/lindbrook/VoronoiPolygons/blob/master/NEWS)
 
 VoronoiPolygons: from tiles to polygons
 ---------------------------------------
@@ -14,8 +14,8 @@ Coloring Polygons
 
 ``` r
 # compute vertices of Voronoi tiles
-polygon.vertices <- VoronoiPolygons(sites = cholera::pumps,
-  observed.data = cholera::roads)
+polygon.vertices <- deldirPolygons(sites = cholera::pumps,
+  rw.data = cholera::roads)
 
 # define colors, plot map, and color code fatalities
 snow.colors <- grDevices::adjustcolor(cholera::snowColors(), alpha.f = 1/3)
@@ -37,8 +37,8 @@ To count the number of cases within each neighborhood, we can use sp::point.in.p
 
 ``` r
 # compute vertices of Voronoi tiles
-polygon.vertices <- VoronoiPolygons(sites = cholera::pumps,
-  observed.data = cholera::roads)
+polygon.vertices <- deldirPolygons(sites = cholera::pumps,
+  rw.data = cholera::roads)
 
 # locations of the 578 fatalities in Soho
 cases <- cholera::fatalities.unstacked
@@ -53,7 +53,7 @@ names(census) <- paste0("p", cholera::pumps$id)
 
 # count of fatalities by neighborhood
 vapply(census, sum, integer(1L))
-#>  p1  p2  p3  p4  p5  p6  p7  p8  p9 p10 p11 p12 p13
+#>  p1  p2  p3  p4  p5  p6  p7  p8  p9 p10 p11 p12 p13 
 #>   0   1  13  23   6  61 361  16  27  62   2   2   4
 ```
 
