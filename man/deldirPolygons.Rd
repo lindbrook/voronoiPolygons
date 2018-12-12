@@ -4,12 +4,12 @@
 \alias{deldirPolygons}
 \title{Compute vertices of Voronoi diagram tiles.}
 \usage{
-deldirPolygons(sites, observed.data = NULL, rw = NULL)
+deldirPolygons(sites, rw.data = NULL, rw = NULL)
 }
 \arguments{
 \item{sites}{Object. Data frame of sites to construct Voronoi diagram with variables "x" and "y".}
 
-\item{observed.data}{Object. Data frame of secondary source of data: observations, cases, addresses, etc. with variables "x" and "y".}
+\item{rw.data}{Object. Data frame of secondary source of data for rectangular window or bounding box: observations, cases, addresses, etc. with variables "x" and "y".}
 
 \item{rw}{Numeric. Vector of corners of the rectangular window or bounding box: xmin, xmax, ymin, ymax. For deldir::deldir().}
 }
