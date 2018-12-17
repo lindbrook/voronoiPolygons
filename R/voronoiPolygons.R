@@ -1,4 +1,4 @@
-#' Compute vertices of Voronoi diagram tiles.
+#' Compute vertices of Voronoi diagram tiles (beta in progress).
 #'
 #' For use with polygon functions.
 #' @param sites Object. Data frame of sites to construct Voronoi diagram with variables "x" and "y".
@@ -52,13 +52,29 @@ VoronoiPolygons <- function(sites, rw.data = NULL, rw = NULL) {
 
     # include corner vertex
     if (test1 & test2) {
-      corner.vertex <- vapply(four.corners, function(corner) {
-        vertical <- signif(corner$x) == signif(coords$x)
-        horizontal <- signif(corner$y) == signif(coords$y)
-        any(vertical) & any(horizontal)
-      }, logical(1L))
+      # test by negation:
+      # does segment from pump to corner intersect any of the polygon's sides?
+      corners <- lapply(seq_len(nrow(dat)), function(j) {
+        intersection.points <- lapply(four.corners, function(corner) {
+          segmentIntersection(sites$x, sites$y, corner$x, corner$y,
+            dat[j, "x1"], dat[j, "y1"], dat[j, "x2"], dat[j, "y2"])
+        })
 
-      coords <- rbind(four.corners[[names(which(corner.vertex))]], coords)
+        vapply(intersection.points, function(x) all(is.na(x)) == FALSE,
+               logical(1L))
+      })
+
+      # If a "corner" returns FALSE, include that corner as a vertex
+      corner.id <- which(colSums(do.call(rbind, corners)) == 0)
+      corner.solution <- four.corners[corner.id]
+
+      if (length(corner.solution) > 1) {
+        # coords <- rbind(coords, do.call(rbind, corner.solution))
+        coords <- do.call(rbind, corner.solution)
+      } else {
+        # coords <- rbind(coords, unlist(corner.solution))
+        coords <- unlist(corner.solution)
+      }
     }
 
     # center vertices relative to landmark's coordinates
@@ -75,4 +91,19 @@ VoronoiPolygons <- function(sites, rw.data = NULL, rw = NULL) {
   })
 
   coordinates
+}
+
+segmentIntersection <- function(x1, y1, x2, y2, a1, b1, a2, b2) {
+  # returns the point of intersection between two segments or NA if none.
+  # http://stackoverflow.com/questions/20519431/finding-point-of-intersection-in-r
+  # x1, y1, x2, y2 coordinates of first segment's endpoints.
+  # a1, b1, a2, b2 coordinates of second segment's endpoints.
+  denom <- (b2 - b1) * (x2 - x1) - (a2 - a1) * (y2 - y1)
+  denom[abs(denom) < 1e-10] <- NA # parallel lines
+  ua <- ((a2 - a1) * (y1 - b1) - (b2 - b1) * (x1 - a1)) / denom
+  ub <- ((x2 - x1) * (y1 - b1) - (y2 - y1) * (x1 - a1)) / denom
+  x <- x1 + ua * (x2 - x1)
+  y <- y1 + ua * (y2 - y1)
+  inside <- (ua >= 0) & (ua <= 1) & (ub >= 0) & (ub <= 1)
+  data.frame(x = ifelse(inside, x, NA), y = ifelse(inside, y, NA))
 }
