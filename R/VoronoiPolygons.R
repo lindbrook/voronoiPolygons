@@ -1,4 +1,4 @@
-#' Compute vertices of Voronoi diagram tiles (beta in progress).
+#' Compute vertices of Voronoi diagram tiles (beta).
 #'
 #' For use with polygon functions.
 #' @param sites Object. Data frame of sites to construct Voronoi diagram with variables "x" and "y".
@@ -36,7 +36,7 @@ VoronoiPolygons <- function(sites, rw.data = NULL, rw = NULL) {
 
   cell.data <- voronoi$dirsgs
 
-  coordinates <- lapply(seq_len(nrow(sites)), function(i) {
+  lapply(seq_len(nrow(sites)), function(i) {
     dat <- sites[i, c("x", "y")]
     cell <- cell.data[cell.data$ind1 == i | cell.data$ind2 == i, ]
     a <- cell[, c("x1", "y1")]
@@ -50,47 +50,41 @@ VoronoiPolygons <- function(sites, rw.data = NULL, rw = NULL) {
     test2 <- unlist(cell[, c("thirdv1", "thirdv2")])
     test2 <- length(unique(test2[test2 < 0])) != 1
 
-    # include corner vertex
+    # corner vertex check
     if (test1 & test2) {
-      # test by negation:
-      # does segment from pump to corner intersect any of the polygon's sides?
-      corners <- lapply(seq_len(nrow(dat)), function(j) {
-        intersection.points <- lapply(four.corners, function(corner) {
-          segmentIntersection(sites$x, sites$y, corner$x, corner$y,
-            dat[j, "x1"], dat[j, "y1"], dat[j, "x2"], dat[j, "y2"])
+      distance.to.corner <- vapply(four.corners, function(corner) {
+        stats::dist(rbind(dat, corner))
+      }, numeric(1L))
+
+      EW.test <- signif(coords$x) %in% signif(x.rng)
+      NS.test <- signif(coords$y) %in% signif(y.rng)
+
+      if (sum(NS.test) == 2 | sum(EW.test) == 2) {
+        nms <- names(sort(distance.to.corner))[1:2]
+        coords <- rbind(coords, do.call(rbind, four.corners[nms]))
+      } else if (nrow(coords) == 2) {
+
+        segment.test <- lapply(four.corners, function(corner) {
+          test <- segmentIntersection(dat$x, dat$y, corner$x, corner$y,
+          coords[1, "x"], coords[1, "y"], coords[2, "x"], coords[2, "y"])
+          all(is.na(test))
         })
 
-        vapply(intersection.points, function(x) all(is.na(x)) == FALSE,
-               logical(1L))
-      })
+        sel <- names(segment.test)[unlist(segment.test)]
+        coords <- rbind(coords, do.call(rbind, four.corners[sel]))
 
-      # If a "corner" returns FALSE, include that corner as a vertex
-      corner.id <- which(colSums(do.call(rbind, corners)) == 0)
-      corner.solution <- four.corners[corner.id]
-
-      if (length(corner.solution) > 1) {
-        # coords <- rbind(coords, do.call(rbind, corner.solution))
-        coords <- do.call(rbind, corner.solution)
       } else {
-        # coords <- rbind(coords, unlist(corner.solution))
-        coords <- unlist(corner.solution)
+        coords <- rbind(coords, four.corners[[which.min(distance.to.corner)]])
       }
     }
 
     # center vertices relative to landmark's coordinates
     coords.centered <- data.frame(x = coords$x - dat$x, y = coords$y - dat$y)
 
-    # transform coordinates from cartesian to polar
-    # sort vertices by phi (angle)
-    # returns vertices in counter-clockwise order
+    # vertices in counter-clockwise order
     idx <- order(apply(coords.centered, 1, pracma::cart2pol)[1, ])
-    coords <- coords[idx, ]
-
-    # append first vertex to last observation to close polygon
-    rbind(coords, coords[1, ])
+    coords[idx, ]
   })
-
-  coordinates
 }
 
 segmentIntersection <- function(x1, y1, x2, y2, a1, b1, a2, b2) {

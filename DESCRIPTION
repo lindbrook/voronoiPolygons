@@ -1,8 +1,8 @@
 Package: VoronoiPolygons
 Type: Package
 Title: VoronoiPolygons: from tiles to polygons
-Version: 0.0.9008
-Date: 2018-12-16
+Version: 0.0.9009
+Date: 2018-12-17
 Author: lindbrook
 Maintainer: lindbrook <lindbrook@gmail.com>
 Description: Compute the vertices of 'deldir' Voronoi tessellation tiles.

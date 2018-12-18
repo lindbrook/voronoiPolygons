@@ -2,7 +2,7 @@
 % Please edit documentation in R/VoronoiPolygons.R
 \name{VoronoiPolygons}
 \alias{VoronoiPolygons}
-\title{Compute vertices of Voronoi diagram tiles (beta in progress).}
+\title{Compute vertices of Voronoi diagram tiles (beta).}
 \usage{
 VoronoiPolygons(sites, rw.data = NULL, rw = NULL)
 }
