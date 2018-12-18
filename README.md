@@ -14,7 +14,7 @@ Coloring Polygons
 
 ``` r
 # compute vertices of Voronoi tiles
-polygon.vertices <- deldirPolygons(sites = cholera::pumps,
+polygon.vertices <- VoronoiPolygons(sites = cholera::pumps,
   rw.data = cholera::roads)
 
 # define colors, plot map, and color code fatalities
@@ -37,7 +37,7 @@ To count the number of cases within each neighborhood, we can use sp::point.in.p
 
 ``` r
 # compute vertices of Voronoi tiles
-polygon.vertices <- deldirPolygons(sites = cholera::pumps,
+polygon.vertices <- VoronoiPolygons(sites = cholera::pumps,
   rw.data = cholera::roads)
 
 # locations of the 578 fatalities in Soho

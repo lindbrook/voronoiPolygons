@@ -63,7 +63,6 @@ VoronoiPolygons <- function(sites, rw.data = NULL, rw = NULL) {
         nms <- names(sort(distance.to.corner))[1:2]
         coords <- rbind(coords, do.call(rbind, four.corners[nms]))
       } else if (nrow(coords) == 2) {
-
         segment.test <- lapply(four.corners, function(corner) {
           test <- segmentIntersection(dat$x, dat$y, corner$x, corner$y,
           coords[1, "x"], coords[1, "y"], coords[2, "x"], coords[2, "y"])
@@ -78,12 +77,9 @@ VoronoiPolygons <- function(sites, rw.data = NULL, rw = NULL) {
       }
     }
 
-    # center vertices relative to landmark's coordinates
     coords.centered <- data.frame(x = coords$x - dat$x, y = coords$y - dat$y)
-
-    # vertices in counter-clockwise order
-    idx <- order(apply(coords.centered, 1, pracma::cart2pol)[1, ])
-    coords[idx, ]
+    sort.index <- order(apply(coords.centered, 1, pracma::cart2pol)[1, ])
+    coords[sort.index, ]
   })
 }
 
