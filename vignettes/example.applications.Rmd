@@ -11,8 +11,8 @@ vignette: >
 
 ```{r setup, include = FALSE}
 knitr::opts_chunk$set(
-  collapse = TRUE #,
-  # comment = "#>"
+  collapse = TRUE,
+  comment = ">"
 )
 
 library(deldirPolygons)
@@ -31,7 +31,8 @@ vertices <- deldirPolygons(sites = cholera::pumps,
   rw.data = cholera::roads)
 
 # define colors, plot map, and color code fatalities
-snow.colors <- grDevices::adjustcolor(cholera::snowColors(), alpha.f = 1/3)
+snow.colors <- grDevices::adjustcolor(cholera::snowColors(),
+  alpha.f = 1/3)
 cholera::snowMap(add.cases = FALSE)
 cholera::addNeighborhoodCases(metric = "euclidean")
 
