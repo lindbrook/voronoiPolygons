@@ -11,8 +11,8 @@ vignette: >
 
 ```{r setup, include = FALSE}
 knitr::opts_chunk$set(
-  collapse = TRUE,
-  comment = "#>"
+  collapse = TRUE #,
+  # comment = "#>"
 )
 
 library(deldirPolygons)
@@ -27,7 +27,8 @@ As an example, I use data from John Snow's map of the 1854 cholera outbreak in t
 
 ```{r coloring, fig.align = "center", fig.width = 5, fig.height = 5, echo = TRUE, eval = TRUE}
 # compute vertices of Voronoi tiles
-vertices <- deldirPolygons(sites = cholera::pumps, rw.data = cholera::roads)
+vertices <- deldirPolygons(sites = cholera::pumps,
+  rw.data = cholera::roads)
 
 # define colors, plot map, and color code fatalities
 snow.colors <- grDevices::adjustcolor(cholera::snowColors(), alpha.f = 1/3)
@@ -46,7 +47,8 @@ To count the number of cases within each neighborhood, we can use sp::point.in.p
 
 ```{r counting, echo = TRUE, eval = TRUE}
 # compute vertices of Voronoi tiles
-vertices <- deldirPolygons(sites = cholera::pumps, rw.data = cholera::roads)
+vertices <- deldirPolygons(sites = cholera::pumps,
+  rw.data = cholera::roads)
 
 # locations of the 578 fatalities in Soho
 cases <- cholera::fatalities.unstacked
@@ -69,8 +71,8 @@ To count the number of cases within each triangle:
 
 ```{r counting_triangles, echo = TRUE, eval = TRUE}
 # compute vertices of Delauny triangles
-vertices <- deldirPolygons(sites = cholera::pumps, rw.data = cholera::roads,
-  type = "triangles")
+vertices <- deldirPolygons(sites = cholera::pumps,
+  rw.data = cholera::roads, type = "triangles")
 
 # locations of the 578 fatalities in Soho
 cases <- cholera::fatalities.unstacked
