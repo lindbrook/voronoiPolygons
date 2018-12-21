@@ -2,19 +2,21 @@
 % Please edit documentation in R/deldirPolygons.R
 \name{deldirPolygons}
 \alias{deldirPolygons}
-\title{Compute vertices of Voronoi diagram tiles.}
+\title{Extract vertices of Delauny triangles and Dirichelet (Voronoi) tiles.}
 \usage{
-deldirPolygons(sites, rw.data = NULL, rw = NULL)
+deldirPolygons(sites, rw.data = NULL, rw = NULL, type = "tiles")
 }
 \arguments{
-\item{sites}{Object. Data frame of sites to construct Voronoi diagram with variables "x" and "y".}
+\item{sites}{Object. Data frame of sites to compute Delauny triangulation and Dirichelet (Voronoi) tessellation with variables "x" and "y".}
 
-\item{rw.data}{Object. Data frame of secondary source of data for rectangular window or bounding box: observations, cases, addresses, etc. with variables "x" and "y".}
+\item{rw.data}{Object. Data frame of secondary source of data to set rectangular window or bounding box: observations, cases, etc. with variables "x" and "y".}
 
-\item{rw}{Numeric. Vector of corners of the rectangular window or bounding box: xmin, xmax, ymin, ymax. For deldir::deldir().}
+\item{rw}{Numeric. Vector of corners to define rectangular window or bounding box: xmin, xmax, ymin, ymax. For deldir::deldir().}
+
+\item{type}{Character. Soure of polygons: "tiles" or "triangles".}
 }
 \description{
-For use with polygon functions.
+For use with functions that use polygons.
 }
 \examples{
 polygon.vertices <- deldirPolygons(cholera::pumps)
@@ -22,6 +24,11 @@ cholera::snowMap()
 invisible(lapply(polygon.vertices, polygon))
 
 polygon.vertices <- deldirPolygons(cholera::pumps, cholera::roads)
+cholera::snowMap()
+invisible(lapply(polygon.vertices, polygon))
+
+polygon.vertices <- deldirPolygons(cholera::pumps, cholera::roads,
+ type = "triangles")
 cholera::snowMap()
 invisible(lapply(polygon.vertices, polygon))
 }
