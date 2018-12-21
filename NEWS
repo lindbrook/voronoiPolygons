@@ -1,3 +1,10 @@
+deldirPolygons 0.0.9010
+==================
+
+- add Delauny triangulation to deldirPolygons().
+- rename package to deldirPolygons.
+
+
 VoronoiPolygons 0.0.9009
 ==================
 

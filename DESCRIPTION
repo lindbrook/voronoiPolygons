@@ -1,13 +1,13 @@
-Package: VoronoiPolygons
+Package: deldirPolygons
 Type: Package
-Title: VoronoiPolygons: from tiles to polygons
-Version: 0.0.9009
-Date: 2018-12-17
+Title: deldirPolygons: tiles, triangles and polygons
+Version: 0.0.9010
+Date: 2018-12-21
 Author: lindbrook
 Maintainer: lindbrook <lindbrook@gmail.com>
 Description: Compute the vertices of 'deldir' Voronoi tessellation tiles.
-URL: https://github.com/lindbrook/VoronoiPolygons
-BugReports: https://github.com/lindbrook/VoronoiPolygons/issues
+URL: https://github.com/lindbrook/deldirPolygons
+BugReports: https://github.com/lindbrook/deldirPolygons/issues
 License: GPL (>= 2)
 Encoding: UTF-8
 LazyData: true
