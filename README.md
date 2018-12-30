@@ -1,6 +1,6 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
-[![GitHub\_Status\_Badge](https://img.shields.io/badge/GitHub-0.0.9011-red.svg)](https://github.com/lindbrook/deldir/blob/master/NEWS)
+[![GitHub\_Status\_Badge](https://img.shields.io/badge/GitHub-0.0.9011-red.svg)](https://github.com/lindbrook/deldirPolygons/blob/master/NEWS)
 
 deldirPolygons: tiles, triangles and polygons
 ---------------------------------------------
