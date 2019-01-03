@@ -1,8 +1,8 @@
 Package: deldirPolygons
 Type: Package
 Title: deldirPolygons: tiles, triangles and polygons
-Version: 0.0.9011
-Date: 2018-12-22
+Version: 0.0.9012
+Date: 2018-01-03
 Author: lindbrook
 Maintainer: lindbrook <lindbrook@gmail.com>
 Description: Compute the vertices of 'deldir' Voronoi tessellation tiles.
