@@ -9,9 +9,9 @@ deldirPolygons(sites, rw.data = NULL, rw = NULL, type = "tiles")
 \arguments{
 \item{sites}{Object. Data frame of sites to compute Delauny triangulation and Dirichelet (Voronoi) tessellation with variables "x" and "y".}
 
-\item{rw.data}{Object. Data frame of secondary source of data to set rectangular window or bounding box: observations, cases, etc. with variables "x" and "y".}
+\item{rw.data}{Object. Data frame of secondary source of data to set the rectangular window or bounding box: observations, cases, etc. with variables "x" and "y".}
 
-\item{rw}{Numeric. Vector of corners to define rectangular window or bounding box: xmin, xmax, ymin, ymax. For deldir::deldir().}
+\item{rw}{Numeric. Vector of corners to define the rectangular window or bounding box: xmin, xmax, ymin, ymax. For deldir::deldir().}
 
 \item{type}{Character. Soure of polygons: "tiles" or "triangles".}
 }
