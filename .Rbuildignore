@@ -5,4 +5,5 @@
 ^cran-comments\.md$
 ^README\.Rmd$
 ^README-.*\.png$
-^vignettes/notes/
+^vignettes/notes/$
+^docs$
