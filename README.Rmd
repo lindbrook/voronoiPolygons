@@ -18,6 +18,13 @@ library(deldirPolygons)
 
 ## deldirPolygons: tiles, triangles and polygons
 
+NOTE: this function has been moved to the 'cholera' package, where it's been renamed to deldirVertices().
+
+CRAN: https://CRAN.R-project.org/package=cholera/   
+GitHub: https://github.com/lindbrook/cholera/
+
+---
+
 Using just the locations of sites or landmarks, Voronoi tessellation partitions a space into cells or tiles that represent those sites' neighborhoods (i.e., their catchment or service areas). In contrast, Delauny triangulation connects sites to all their first order neighbors and partitions the space defined by the sites on the perimeter into triangles.
 
 This package adds to the functionality of the 'deldir' package by computing the vertices of those tiles and traingles so that we can leverage functions that use polygons. Doing so simplifies tasks like color coding tiles (or triangles) or counting elements of interest within tiles (or triangles).

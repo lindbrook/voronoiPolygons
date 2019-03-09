@@ -1,18 +1,35 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
-[![GitHub\_Status\_Badge](https://img.shields.io/badge/GitHub-0.0.9012-red.svg)](https://github.com/lindbrook/deldirPolygons/blob/master/NEWS)
 
-deldirPolygons: tiles, triangles and polygons
----------------------------------------------
+[![GitHub\_Status\_Badge](https://img.shields.io/badge/GitHub-0.0.9013-red.svg)](https://github.com/lindbrook/deldirPolygons/blob/master/NEWS)
 
-Using just the locations of sites or landmarks, Voronoi tessellation partitions a space into cells or tiles that represent those sites' neighborhoods (i.e., their catchment or service areas). In contrast, Delauny triangulation connects sites to all their first order neighbors and partitions the space defined by the sites on the perimeter into triangles.
+## deldirPolygons: tiles, triangles and polygons
 
-This package adds to the functionality of the 'deldir' package by computing the vertices of those tiles and traingles so that we can leverage functions that use polygons. Doing so simplifies tasks like color coding tiles (or triangles) or counting elements of interest within tiles (or triangles).
+NOTE: this function has been moved to the ‘cholera’ package, where it’s
+been renamed to deldirVertices().
 
-As an example, I use data from John Snow's map of the 1854 cholera outbreak in the Soho area London.
+CRAN: <https://CRAN.R-project.org/package=cholera/>  
+GitHub: <https://github.com/lindbrook/cholera/>
 
-Coloring Tiles
---------------
+-----
+
+Using just the locations of sites or landmarks, Voronoi tessellation
+partitions a space into cells or tiles that represent those sites’
+neighborhoods (i.e., their catchment or service areas). In contrast,
+Delauny triangulation connects sites to all their first order neighbors
+and partitions the space defined by the sites on the perimeter into
+triangles.
+
+This package adds to the functionality of the ‘deldir’ package by
+computing the vertices of those tiles and traingles so that we can
+leverage functions that use polygons. Doing so simplifies tasks like
+color coding tiles (or triangles) or counting elements of interest
+within tiles (or triangles).
+
+As an example, I use data from John Snow’s map of the 1854 cholera
+outbreak in the Soho area London.
+
+## Coloring Tiles
 
 ``` r
 # compute vertices of Voronoi tiles
@@ -31,12 +48,12 @@ invisible(lapply(seq_along(vertices), function(i) {
 }))
 ```
 
-<img src="README_files/figure-markdown_github/coloring-1.png" style="display: block; margin: auto;" />
+<img src="README_files/figure-gfm/coloring-1.png" style="display: block; margin: auto;" />
 
-Counting Observations in Tiles
-------------------------------
+## Counting Observations in Tiles
 
-To count the number of cases within each neighborhood, we can use sp::point.in.polygon().
+To count the number of cases within each neighborhood, we can use
+sp::point.in.polygon().
 
 ``` r
 # compute vertices of Voronoi tiles
@@ -60,8 +77,7 @@ vapply(census, sum, integer(1L))
 >   0   1  13  23   6  61 361  16  27  62   2   2   4
 ```
 
-Counting Observations in Triangles
-----------------------------------
+## Counting Observations in Triangles
 
 To count the number of cases within each triangle:
 
@@ -89,7 +105,8 @@ vapply(census, sum, integer(1L))
 
 ### getting started
 
-You can install the current development version of 'deldirPolygons' from GitHub:
+You can install the current development version of ‘deldirPolygons’ from
+GitHub:
 
 ``` r
 # Note that you may need to install the 'devtools' package:

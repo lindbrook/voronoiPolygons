@@ -1,3 +1,8 @@
+deldirPolygons 0.0.9013
+==================
+
+- migration to 'cholera' package.
+
 deldirPolygons 0.0.9012
 ==================
 
