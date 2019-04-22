@@ -5,8 +5,8 @@
 
 ## voronoiPolygons: tiles, triangles and polygons
 
-NOTE: this function has been moved to the ‘cholera’ package, where it’s
-been renamed to deldirVertices().
+NOTE: this function available is also available in the ‘cholera’
+package.
 
 CRAN: <https://CRAN.R-project.org/package=cholera/>  
 GitHub: <https://github.com/lindbrook/cholera/>
