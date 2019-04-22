@@ -3,7 +3,7 @@ output: github_document
 ---
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
-[![GitHub\_Status\_Badge](https://img.shields.io/badge/GitHub-0.0.9012-red.svg)](https://github.com/lindbrook/deldirPolygons/blob/master/NEWS)
+[![GitHub\_Status\_Badge](https://img.shields.io/badge/GitHub-0.0.9012-red.svg)](https://github.com/lindbrook/voronoiPolygons/blob/master/NEWS)
 
 ```{r, echo = FALSE}
 knitr::opts_chunk$set(
@@ -13,10 +13,10 @@ knitr::opts_chunk$set(
 ```
 
 ```{r, echo = FALSE}
-library(deldirPolygons)
+library(voronoiPolygons)
 ```
 
-## deldirPolygons: tiles, triangles and polygons
+## voronoiPolygons: tiles, triangles and polygons
 
 NOTE: this function has been moved to the 'cholera' package, where it's been renamed to deldirVertices().
 
@@ -35,7 +35,7 @@ As an example, I use data from John Snow's map of the 1854 cholera outbreak in t
 
 ```{r coloring, fig.align = "center", fig.width = 5, fig.height = 5, echo = TRUE, eval = TRUE}
 # compute vertices of Voronoi tiles
-vertices <- deldirPolygons(sites = cholera::pumps,
+vertices <- voronoiPolygons(sites = cholera::pumps,
   rw.data = cholera::roads)
 
 # define colors, plot map, and color code fatalities
@@ -56,7 +56,7 @@ To count the number of cases within each neighborhood, we can use sp::point.in.p
 
 ```{r counting, echo = TRUE, eval = TRUE}
 # compute vertices of Voronoi tiles
-vertices <- deldirPolygons(sites = cholera::pumps,
+vertices <- voronoiPolygons(sites = cholera::pumps,
   rw.data = cholera::roads)
 
 # locations of the 578 fatalities in Soho
@@ -80,7 +80,7 @@ To count the number of cases within each triangle:
 
 ```{r counting_triangles, echo = TRUE, eval = TRUE}
 # compute vertices of Delauny triangles
-vertices <- deldirPolygons(sites = cholera::pumps,
+vertices <- voronoiPolygons(sites = cholera::pumps,
   rw.data = cholera::roads, type = "triangles")
 
 # locations of the 578 fatalities in Soho
@@ -100,15 +100,15 @@ vapply(census, sum, integer(1L))
 
 ### getting started
 
-You can install the current development version of 'deldirPolygons' from GitHub:
+You can install the current development version of 'voronoiPolygons' from GitHub:
 
 ```{r, eval = FALSE}
 # Note that you may need to install the 'devtools' package:
 # install.packages("devtools")
 
 # For 'devtools' (< 2.0.0)
-devtools::install_github("lindbrook/deldirPolygons", build_vignettes = TRUE)
+devtools::install_github("lindbrook/voronoiPolygons", build_vignettes = TRUE)
 
 # For 'devtools' (>= 2.0.0)
-devtools::install_github("lindbrook/deldirPolygons", build_opts = c("--no-resave-data", "--no-manual"))
+devtools::install_github("lindbrook/voronoiPolygons", build_opts = c("--no-resave-data", "--no-manual"))
 ```
