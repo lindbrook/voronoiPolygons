@@ -1,9 +1,9 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-[![GitHub\_Status\_Badge](https://img.shields.io/badge/GitHub-0.0.9013-red.svg)](https://github.com/lindbrook/deldirPolygons/blob/master/NEWS)
+[![GitHub\_Status\_Badge](https://img.shields.io/badge/GitHub-0.0.9012-red.svg)](https://github.com/lindbrook/voronoiPolygons/blob/master/NEWS)
 
-## deldirPolygons: tiles, triangles and polygons
+## voronoiPolygons: tiles, triangles and polygons
 
 NOTE: this function has been moved to the ‘cholera’ package, where it’s
 been renamed to deldirVertices().
@@ -33,7 +33,7 @@ outbreak in the Soho area London.
 
 ``` r
 # compute vertices of Voronoi tiles
-vertices <- deldirPolygons(sites = cholera::pumps,
+vertices <- voronoiPolygons(sites = cholera::pumps,
   rw.data = cholera::roads)
 
 # define colors, plot map, and color code fatalities
@@ -57,7 +57,7 @@ sp::point.in.polygon().
 
 ``` r
 # compute vertices of Voronoi tiles
-vertices <- deldirPolygons(sites = cholera::pumps,
+vertices <- voronoiPolygons(sites = cholera::pumps,
   rw.data = cholera::roads)
 
 # locations of the 578 fatalities in Soho
@@ -83,7 +83,7 @@ To count the number of cases within each triangle:
 
 ``` r
 # compute vertices of Delauny triangles
-vertices <- deldirPolygons(sites = cholera::pumps,
+vertices <- voronoiPolygons(sites = cholera::pumps,
   rw.data = cholera::roads, type = "triangles")
 
 # locations of the 578 fatalities in Soho
@@ -105,16 +105,16 @@ vapply(census, sum, integer(1L))
 
 ### getting started
 
-You can install the current development version of ‘deldirPolygons’ from
-GitHub:
+You can install the current development version of ‘voronoiPolygons’
+from GitHub:
 
 ``` r
 # Note that you may need to install the 'devtools' package:
 # install.packages("devtools")
 
 # For 'devtools' (< 2.0.0)
-devtools::install_github("lindbrook/deldirPolygons", build_vignettes = TRUE)
+devtools::install_github("lindbrook/voronoiPolygons", build_vignettes = TRUE)
 
 # For 'devtools' (>= 2.0.0)
-devtools::install_github("lindbrook/deldirPolygons", build_opts = c("--no-resave-data", "--no-manual"))
+devtools::install_github("lindbrook/voronoiPolygons", build_opts = c("--no-resave-data", "--no-manual"))
 ```
