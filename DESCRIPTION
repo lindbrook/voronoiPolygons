@@ -12,7 +12,7 @@ License: GPL (>= 2)
 Encoding: UTF-8
 Language: en-US
 LazyData: true
-Imports: deldir (>= 0.0-18),
+Imports: deldir (>= 1.0-2),
          cholera,
          graphics,
          pracma,
