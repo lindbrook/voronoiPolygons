@@ -1,7 +1,7 @@
-#' Extract vertices of Delauny triangles and Dirichelet (Voronoi) tiles.
+#' Extract vertices of Delaunay triangles and Dirichelet (Voronoi) tiles.
 #'
-#' For construction and plotting of Delauny and Voronoi polygons.
-#' @param sites Object. Data frame of sites to compute Delauny triangulation and Dirichelet (Voronoi) tessellation with variables "x" and "y".
+#' For construction and plotting of Delaunay and Voronoi polygons.
+#' @param sites Object. Data frame of sites to compute Delaunay triangulation and Dirichelet (Voronoi) tessellation with variables "x" and "y".
 #' @param rw.data Object. Data frame of secondary source of data to set the rectangular window or bounding box: observations, cases, etc. with variables "x" and "y".
 #' @param rw Numeric. Alternative to rw.data: vector of corners to define the rectangular window or bounding box: xmin, xmax, ymin, ymax.
 #' @param type Character. "tiles" (tessellation) or "triangles" (triangulation) vertices.
@@ -10,18 +10,18 @@
 #' @note This function relies on the 'deldir' package.
 #' @export
 #' @examples
-#' snowMap()
-#' voronoiPolygons(pumps, output = "polygons")
+#' cholera::snowMap()
+#' voronoiPolygons(cholera::pumps, output = "polygons")
 #'
-#' snowMap()
-#' voronoiPolygons(pumps, roads, output = "polygons")
+#' cholera::snowMap()
+#' voronoiPolygons(cholera::pumps, cholera::roads, output = "polygons")
 #'
-#' snowMap()
-#' voronoiPolygons(pumps, roads, type = "triangles", output = "polygons")
+#' cholera::snowMap()
+#' voronoiPolygons(cholera::pumps, cholera::roads, type = "triangles", output = "polygons")
 #'
-#' vertices <- voronoiPolygons(pumps, roads)
-#' snow.colors <- grDevices::adjustcolor(snowColors(), alpha.f = 1/3)
-#' snowMap(add.cases = FALSE)
+#' vertices <- voronoiPolygons(cholera::pumps, cholera::roads)
+#' snow.colors <- grDevices::adjustcolor(cholera::snowColors(), alpha.f = 1/3)
+#' cholera::snowMap(add.cases = FALSE)
 #' invisible(lapply(seq_along(vertices), function(i) {
 #'   polygon(vertices[[i]], col = snow.colors[[i]])
 #' }))
@@ -58,6 +58,6 @@ voronoiPolygons <- function(sites, rw.data = NULL, rw = NULL, type = "tiles",
   })
 
   if (output == "vertices") vertices
-  else if (output == "polygons") invisible(lapply(vertices, polygon))
+  else if (output == "polygons") invisible(lapply(vertices, graphics::polygon))
   else stop('output must either be "vertices" or "polygons".')
 }
