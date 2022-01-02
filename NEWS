@@ -1,3 +1,10 @@
+voronoiPolygons 0.0.9013
+==================
+
+- fix typo (Delauny to Delaunay) and use "::".
+- set deldir (>= 1.0-2).
+
+
 voronoiPolygons 0.0.9012
 ==================
 

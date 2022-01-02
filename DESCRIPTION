@@ -1,8 +1,8 @@
 Package: voronoiPolygons
 Type: Package
 Title: voronoiPolygons: tiles, triangles and polygons
-Version: 0.0.9012
-Date: 2019-04-22
+Version: 0.0.9013
+Date: 2022-01-01
 Author: lindbrook
 Maintainer: lindbrook <lindbrook@gmail.com>
 Description: Compute the vertices of 'deldir' Voronoi tessellation tiles.
@@ -12,12 +12,13 @@ License: GPL (>= 2)
 Encoding: UTF-8
 Language: en-US
 LazyData: true
-Imports: deldir (>= 0.0-18),
+Imports: deldir (>= 1.0-2),
          cholera,
          graphics,
          pracma,
+         RColorBrewer,
          sp
-RoxygenNote: 6.1.1
+RoxygenNote: 7.1.2
 Suggests:
     knitr,
     rmarkdown

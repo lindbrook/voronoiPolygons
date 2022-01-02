@@ -1,7 +1,7 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-[![GitHub\_Status\_Badge](https://img.shields.io/badge/GitHub-0.0.9012-red.svg)](https://github.com/lindbrook/voronoiPolygons/blob/master/NEWS)
+[![GitHub\_Status\_Badge](https://img.shields.io/badge/GitHub-0.0.9013-red.svg)](https://github.com/lindbrook/voronoiPolygons/blob/master/NEWS)
 
 ## voronoiPolygons: tiles, triangles and polygons
 

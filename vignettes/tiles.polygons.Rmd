@@ -74,7 +74,7 @@ vapply(census, sum, integer(1L))
 vertices <- voronoiPolygons(sites = cholera::pumps, rw.data = cholera::roads)
 
 # define colors
-snow.colors <- grDevices::adjustcolor(snowColors(), alpha.f = 1/3)
+snow.colors <- grDevices::adjustcolor(cholera::snowColors(), alpha.f = 1/3)
 
 # plot map and color coded tiles
 snowMap(add.cases = FALSE)
@@ -97,7 +97,7 @@ brewer.colors <- sample(c(colors.pair, colors.dark))
 colors <- grDevices::adjustcolor(brewer.colors, alpha.f = 1/3)
 
 # plot map and color coded triangles
-snowMap(add.cases = FALSE)
+cholera::snowMap(add.cases = FALSE)
 invisible(lapply(seq_along(vertices), function(i) {
   polygon(vertices[[i]], col = colors[[i]])
 }))
