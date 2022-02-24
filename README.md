@@ -8,8 +8,8 @@
 NOTE: this function available is also available in the ‘cholera’
 package.
 
-CRAN: <https://CRAN.R-project.org/package=cholera/> GitHub:
-<https://github.com/lindbrook/cholera/>
+CRAN: <https://CRAN.R-project.org/package=cholera/>  
+GitHub: <https://github.com/lindbrook/cholera/>
 
 ------------------------------------------------------------------------
 
