@@ -1,22 +1,22 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-[![GitHub\_Status\_Badge](https://img.shields.io/badge/GitHub-0.0.9013-red.svg)](https://github.com/lindbrook/voronoiPolygons/blob/master/NEWS)
+[![GitHub_Status_Badge](https://img.shields.io/badge/GitHub-0.0.9013-red.svg)](https://github.com/lindbrook/voronoiPolygons/blob/master/NEWS)
 
 ## voronoiPolygons: tiles, triangles and polygons
 
 NOTE: this function available is also available in the ‘cholera’
 package.
 
-CRAN: <https://CRAN.R-project.org/package=cholera/>  
-GitHub: <https://github.com/lindbrook/cholera/>
+CRAN: <https://CRAN.R-project.org/package=cholera/> GitHub:
+<https://github.com/lindbrook/cholera/>
 
------
+------------------------------------------------------------------------
 
 Using just the locations of sites or landmarks, Voronoi tessellation
 partitions a space into cells or tiles that represent those sites’
 neighborhoods (i.e., their catchment or service areas). In contrast,
-Delauny triangulation connects sites to all their first order neighbors
+Delaunay triangulation connects sites to all their first order neighbors
 and partitions the space defined by the sites on the perimeter into
 triangles.
 
@@ -82,7 +82,7 @@ vapply(census, sum, integer(1L))
 To count the number of cases within each triangle:
 
 ``` r
-# compute vertices of Delauny triangles
+# compute vertices of Delaunay triangles
 vertices <- voronoiPolygons(sites = cholera::pumps,
   rw.data = cholera::roads, type = "triangles")
 

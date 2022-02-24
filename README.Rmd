@@ -3,7 +3,7 @@ output: github_document
 ---
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
-[![GitHub\_Status\_Badge](https://img.shields.io/badge/GitHub-0.0.9012-red.svg)](https://github.com/lindbrook/voronoiPolygons/blob/master/NEWS)
+[![GitHub\_Status\_Badge](https://img.shields.io/badge/GitHub-0.0.9013-red.svg)](https://github.com/lindbrook/voronoiPolygons/blob/master/NEWS)
 
 ```{r, echo = FALSE}
 knitr::opts_chunk$set(
@@ -20,12 +20,12 @@ library(voronoiPolygons)
 
 NOTE: this function available is also available in the 'cholera' package.
 
-CRAN: https://CRAN.R-project.org/package=cholera/   
+CRAN: https://CRAN.R-project.org/package=cholera/
 GitHub: https://github.com/lindbrook/cholera/
 
 ---
 
-Using just the locations of sites or landmarks, Voronoi tessellation partitions a space into cells or tiles that represent those sites' neighborhoods (i.e., their catchment or service areas). In contrast, Delauny triangulation connects sites to all their first order neighbors and partitions the space defined by the sites on the perimeter into triangles.
+Using just the locations of sites or landmarks, Voronoi tessellation partitions a space into cells or tiles that represent those sites' neighborhoods (i.e., their catchment or service areas). In contrast, Delaunay triangulation connects sites to all their first order neighbors and partitions the space defined by the sites on the perimeter into triangles.
 
 This package adds to the functionality of the 'deldir' package by computing the vertices of those tiles and traingles so that we can leverage functions that use polygons. Doing so simplifies tasks like color coding tiles (or triangles) or counting elements of interest within tiles (or triangles).
 
@@ -79,7 +79,7 @@ vapply(census, sum, integer(1L))
 To count the number of cases within each triangle:
 
 ```{r counting_triangles, echo = TRUE, eval = TRUE}
-# compute vertices of Delauny triangles
+# compute vertices of Delaunay triangles
 vertices <- voronoiPolygons(sites = cholera::pumps,
   rw.data = cholera::roads, type = "triangles")
 
