@@ -1,7 +1,7 @@
 Package: voronoiPolygons
 Type: Package
 Title: voronoiPolygons: tiles, triangles and polygons
-Version: 0.0.9015
+Version: 0.0.9016
 Date: 2023-10-31
 Author: lindbrook
 Maintainer: lindbrook <lindbrook@gmail.com>
@@ -13,7 +13,6 @@ Encoding: UTF-8
 Language: en-US
 LazyData: true
 Imports: deldir (>= 1.0-2),
-         graphics
 RoxygenNote: 7.2.3
 Suggests:
     cholera,
